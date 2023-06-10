@@ -23,7 +23,11 @@ Note, you must setup a [personal access token](https://docs.github.com/en/packag
 2. Modify the registry URL in the `launch.sh` script to match your own docker registry
 3. Run the script using the following arguments:
 
-    - `NAME`: The chosen name for the container
-    - `URL`: The URL of the github repo
-    - `TOKEN`: The secret token of the github repo (see `settings > Actions > Runners > Linux > Configure`)
+    - `NAME`: 
+        - The chosen name for the container
+    - `URL`: 
+        - The URL of the github repo
+    - `TOKEN`: 
+        - The secret token of the github repo (see `settings > Actions > Runners > Linux > Configure`). 
+        - Note: these tokens can be viewed using the `docker inspect` command but the tokens expire quickly (after a couple of minutes).
 
