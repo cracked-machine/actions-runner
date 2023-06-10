@@ -17,6 +17,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v3
       - name: build docker image 
-        run: DOCKER_BUILDKIT=1 docker build -f Dockerfile -t ghcr.io/${{ github.actor }}/github_runner:ubuntu2204 .
+        run: DOCKER_BUILDKIT=1 docker build -f Dockerfile -t ghcr.io/${{ github.actor }}/actions_runner:ubuntu2204 .
       - name: push docker image 
-        run: env && docker push ghcr.io/${{ github.actor }}/github_runner:ubuntu2204
+        run: env && docker push ghcr.io/${{ github.actor }}/actions_runner:ubuntu2204
