@@ -23,7 +23,12 @@ if [ -z ${TOKEN} ]; then
         exit 3
 fi
 
-docker run --name ${NAME} -it -t ghcr.io/cracked-machine/actions_runner:ubuntu2204 bash -c "./actions-runner/config.sh --url ${URL} --token ${TOKEN} && ./actions-runner/run.sh"
+REGISTRY_URL=ghcr.io/cracked-machine
+
+# - create a new container
+# - run the config command to register the runner with the github repo 
+# - start the runner.
+docker run --name ${NAME} -it -t ${REGISTRY_URL}/actions_runner:ubuntu2204 bash -c "./actions-runner/config.sh --url ${URL} --token ${TOKEN} && ./actions-runner/run.sh"
 
 
 
