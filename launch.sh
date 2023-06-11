@@ -31,7 +31,7 @@ docker pull ${REGISTRY_URL}/actions_runner:ubuntu2204
 # - create a new container
 # - run the config command to register the runner with the github repo 
 # - start the runner.
-docker run --name ${NAME} -it -t ${REGISTRY_URL}/actions_runner:ubuntu2204 bash -c "./actions-runner/config.sh --url ${URL} --token ${TOKEN} && ./actions-runner/run.sh"
+docker run -v /var/run/docker.sock:/var/run/docker.sock --name ${NAME} -it -t ${REGISTRY_URL}/actions_runner:ubuntu2204 bash -c "./actions-runner/config.sh --url ${URL} --token ${TOKEN} && ./actions-runner/run.sh"
 
 
 
