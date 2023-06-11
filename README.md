@@ -27,7 +27,7 @@ Note, you must setup a [personal access token](https://docs.github.com/en/packag
 
 ## Using the docker image on a server
 
-You will need to install 'docker.io' and grant permissions to the daemon:
+You will need to install `docker.io` and grant permissions to the daemon:
 
 ```
 sudo chmod 664 /var/run/docker.sock
