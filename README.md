@@ -27,6 +27,12 @@ Note, you must setup a [personal access token](https://docs.github.com/en/packag
 
 ## Using the docker image on a server
 
+You will need to install 'docker.io' and grant permissions to the daemon:
+
+'''
+sudo chmod 664 /var/run/docker.sock
+'''
+
 1. Upload the [launch.sh](launch.sh) script to the server
 2. Modify the registry URL in the [launch.sh](launch.sh) script to match your own docker registry
 3. Run the script using the following arguments:
