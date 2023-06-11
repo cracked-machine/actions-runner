@@ -6,12 +6,14 @@ ARG RUNNER_VERSION="2.304.0"
 ARG USER=runner
 
 # update the base packages and add a non-sudo user
-RUN apt-get update -y && apt-get upgrade -y && useradd -m $USER
+RUN apt-get update -y && apt-get upgrade -y
 
 # install python and the packages the your code depends on along with jq so we can parse JSON
 # add additional packages as necessary
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip docker.io
+
+RUN useradd -m $USER && usermod -aG docker $USER
 
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/$USER && mkdir actions-runner && cd actions-runner \
