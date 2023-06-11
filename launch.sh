@@ -25,6 +25,9 @@ fi
 
 REGISTRY_URL=ghcr.io/cracked-machine
 
+# sync local registry with the "latest" image
+docker pull -t ${REGISTRY_URL}/actions_runner:ubuntu2204
+
 # - create a new container
 # - run the config command to register the runner with the github repo 
 # - start the runner.
