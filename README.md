@@ -13,9 +13,9 @@ This repo contains the Dockerfile for building images that can run self-hosted g
 1. Clone the repo to your linux workstation:
 2. Build the dockerfile using your registry settings:
 
-    '''
+    ```
     BUILDKIT=1 docker build -t <github_account_url>/actions_runner:ubuntu2204 .
-    '''
+    ```
 
 3. push to your registry:
 
