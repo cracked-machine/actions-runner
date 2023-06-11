@@ -33,9 +33,17 @@ docker stop ${NAME}
 docker rm ${NAME}
 
 # - create a new container
-# - run the config command to register the runner with the github repo 
+# - volume mount the docker daemon (allows docker cli from within container)
+# - volume mount current directory ($PWD)
+# - run the config command to register the runner with the github repo, using mounted volume $PWD as the working directory.
 # - start the runner.
-docker run -v /var/run/docker.sock:/var/run/docker.sock --name ${NAME} -it -t ${REGISTRY_URL}/actions_runner:ubuntu2204 bash -c "./actions-runner/config.sh --url ${URL} --token ${TOKEN} && ./actions-runner/run.sh"
+docker run \
+    -v /var/run/docker.sock:/var/run/docker.sock \ 
+    -v ${PWD}:${PWD} \
+    --name ${NAME} \
+    -it \
+    -t ${REGISTRY_URL}/actions_runner:ubuntu2204 \
+    bash -c "./actions-runner/config.sh --url ${URL} --token ${TOKEN} --work ${PWD} && ./actions-runner/run.sh"
 
 
 
