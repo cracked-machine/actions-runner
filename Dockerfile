@@ -13,8 +13,7 @@ RUN apt-get update -y && apt-get upgrade -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     curl jq build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip docker.io
 
-RUN chmod 666 /var/run/docker.sock
-RUN useradd -m $USER && usermod -aG docker $USER
+RUN useradd -m $USER && echo "$USER:$USER" | chpasswd && adduser $USER sudo && usermod -aG docker $USER
 
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/$USER && mkdir actions-runner && cd actions-runner \
